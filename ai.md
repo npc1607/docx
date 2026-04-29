@@ -5,3 +5,4 @@
 | 3 | Open Claude Code Console | https://www.openclaudecode.cn/console |
 | 4 | Poixe | https://poixe.com |
 | 5 | CodexZH | https://codexzh.com/ |
+| 6 | Muskpay | https://muskpay.top |
