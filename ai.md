@@ -6,3 +6,4 @@
 | 4 | Poixe | https://poixe.com |
 | 5 | CodexZH | https://codexzh.com/ |
 | 6 | Muskpay | https://muskpay.top |
+| 7 | PlusGo | [https://muskpay.top](https://plusgo.pro/) |
