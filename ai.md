@@ -7,3 +7,4 @@
 | 5 | CodexZH | https://codexzh.com/ |
 | 6 | Muskpay | https://muskpay.top |
 | 7 | PlusGo | [https://muskpay.top](https://plusgo.pro/) |
+| 8 | GetToken | https://gettoken.dev |
