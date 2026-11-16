@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PoE 1 召唤师（Necromancer）霸气之击 67级平滑提升指南</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --surface-2: #1f242e;
+      --border: #2c3342;
+      --text: #e6e9ef;
+      --muted: #9aa3b2;
+      --gold: #dfaf5f;
+      --gold-soft: rgba(223, 175, 95, 0.14);
+      --green: #4ade80;
+      --green-soft: rgba(74, 222, 128, 0.12);
+      --blue: #60a5fa;
+      --blue-soft: rgba(96, 165, 250, 0.12);
+      --red: #f87171;
+      --red-soft: rgba(248, 113, 113, 0.12);
+      --purple: #c084fc;
+      --purple-soft: rgba(192, 132, 252, 0.12);
+      --orange: #fb923c;
+      --orange-soft: rgba(251, 146, 60, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 17, 21, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+    }
+    .topnav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--purple);
+      font-size: 15px;
+      letter-spacing: 0.4px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1d1829 0%, #14171f 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--purple);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      color: var(--gold);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .badge-gold { background: var(--gold-soft); color: var(--gold); border-color: rgba(223,175,95,0.3); }
+    .badge-green { background: var(--green-soft); color: var(--green); border-color: rgba(74,222,128,0.3); }
+    .badge-blue { background: var(--blue-soft); color: var(--blue); border-color: rgba(96,165,250,0.3); }
+    .badge-red { background: var(--red-soft); color: var(--red); border-color: rgba(248,113,113,0.3); }
+    .badge-purple { background: var(--purple-soft); color: var(--purple); border-color: rgba(192,132,252,0.3); }
+    .badge-orange { background: var(--orange-soft); color: var(--orange); border-color: rgba(251,146,60,0.3); }
+
+    section {
+      margin-bottom: 36px;
+      scroll-margin-top: 64px;
+    }
+    .section-title {
+      font-size: 20px;
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+    }
+    .section-title .num {
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 13px;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .card li { margin-bottom: 6px; }
+    .muted { color: var(--muted); font-size: 13.5px; }
+
+    .callout {
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    .callout-warn { background: var(--red-soft); border-color: rgba(248,113,113,0.35); }
+    .callout-tip { background: var(--green-soft); border-color: rgba(74,222,128,0.35); }
+    .callout-info { background: var(--blue-soft); border-color: rgba(96,165,250,0.35); }
+    .callout-purple { background: var(--purple-soft); border-color: rgba(192,132,252,0.35); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+      text-align: left;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--gold);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .tab-btn {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--text); border-color: var(--purple); }
+    .tab-btn.active {
+      background: var(--purple-soft);
+      color: var(--purple);
+      border-color: var(--purple);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .gem {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin: 2px 3px 2px 0;
+    }
+    .gem-r { background: rgba(239,68,68,0.18); color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+    .gem-g { background: rgba(34,197,94,0.18); color: #86efac; border: 1px solid rgba(34,197,94,0.35); }
+    .gem-b { background: rgba(59,130,246,0.18); color: #93c5fd; border: 1px solid rgba(59,130,246,0.35); }
+    .gem-w { background: rgba(226,232,240,0.18); color: #f1f5f9; border: 1px solid rgba(226,232,240,0.35); }
+
+    .affix-pre { color: #93c5fd; font-weight: 600; }
+    .affix-suf { color: #fde047; font-weight: 600; }
+    .unique-name { color: #fb923c; font-weight: 600; }
+
+    code {
+      background: var(--surface-2);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 12.8px;
+      color: #f3f4f6;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">PoE 1 · 召唤师（Necromancer）霸气之击进阶指南</div>
+    <div class="nav-links">
+      <a href="#version">升华与Excommunicate</a>
+      <a href="#scaling">等级与核心收益</a>
+      <a href="#archetypes">混沌 vs 穿刺 vs 元素</a>
+      <a href="#gems">宝石Link与收益</a>
+      <a href="#gear">装备前后缀与暗金</a>
+      <a href="#clusters">星团词条</a>
+      <a href="#flasks">药水配置</a>
+      <a href="#roadmap">阶段行动清单</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="badge badge-purple">升华职业：女巫 - 召唤师 (Necromancer)</span>
+      <span class="badge badge-orange">当前武器：The Broken Elegy（双手战杖）</span>
+      <span class="badge badge-gold">版本参考：3.28 ~ 3.30 (Covens of Umbra)</span>
+      <span class="badge badge-green">当前阶段：67级刚进异界</span>
+    </div>
+    <h1>召唤师 · 霸气之击（Dominating Blow）全维度提升攻略</h1>
+    <p>专为 <strong>召唤师（Necromancer）+ 手持 The Broken Elegy</strong> 定制！这把武器自带 <strong>113–157% 召唤物增伤、17–31% 召唤物持续时间、59–83% 物理转额外混沌伤</strong> 以及每秒自动触发 <code>Ceaseless Flesh</code> 配合 <code>Rotten Bulwark</code> 吸收伤害。与召唤师的 <strong>非自然力量（100%物理转混沌+凋零）</strong> 是天作之合！</p>
+  </div>
+
+  <!-- 1. ASCENDANCY & EXCOMMUNICATE -->
+  <section id="version">
+    <h2 class="section-title"><span class="num">01</span> 召唤师升华特性 &amp; Excommunicate Support 评估</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>召唤师 + The Broken Elegy 专属机制 <span class="badge badge-purple">Necromancer</span></h3>
+        <ul>
+          <li><strong>The Broken Elegy 完美契合点</strong>：它不仅给 <code>59%–83% 物理伤害的额外混沌伤</code> 和召唤物持续时间（让哨兵存在更久），还自带 <strong>每秒触发 25 级 Ceaseless Flesh</strong>，死亡时触发 <strong>Rotten Bulwark</strong>（类似结界，先于血/ES吸收击中伤害）。</li>
+          <li><strong>非自然力量（Unnatural Strength）</strong>：给予召唤物 <strong>不洁之力（100% 物理转混沌 + 25% 施加凋零）</strong>。注意：PoE 中“物理的额外混沌伤”基于原物理计算，所以武器给的 59–83% 额外混沌伤和升华 100% 转混沌<strong>完美叠加</strong>！</li>
+          <li><strong>黑暗统御者 + 奉献女魔</strong>：+30% 全元素抗性；开 <strong>骸骨奉献</strong> 配合战杖基底 <code>+22% 攻击格挡</code>，无需盾牌也能堆高双格挡！</li>
+          <li><strong>双 6 连潜力 &amp; 位移改动</strong>：双手战杖无法用盾冲，位移请换 <strong>跃击（Leap Slam）+ 快速攻击</strong>；武器本身可插辅助宝石直接强化 <code>Ceaseless Flesh</code>。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Excommunicate Support（绝罚辅助）取舍 <span class="badge badge-gold">3.28 新增</span></h3>
+        <ul>
+          <li><strong>上线时间</strong>：2026年3月 <strong>3.28.0（Mirage 幻影赛季）</strong> 新增近战攻击辅助宝石（20级需70力/智）。</li>
+          <li><strong>核心机制</strong>：给近战攻击提供额外火/电伤，并在击中时使敌人 3 秒内无法造成混沌伤害。</li>
+          <li><strong>致命限制</strong>：<code>Does not modify skills used by minions</code>（<strong>完全不加成你的统御哨兵</strong>）。</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-bottom:0;">
+          <strong>结论：立刻换掉！</strong> 召唤师本身是靠哨兵打伤害，带它等于主技能少了一颗 35%–45% 更多伤害的辅助石。怕混沌伤请在药水栏带<strong>紫晶药剂</strong>，或把它连在<strong>盾冲</strong>上挂减益。
+        </div>
+        <div class="callout callout-tip" style="margin-bottom:0; margin-top:10px;">
+          <strong>3.29~3.30 利好：</strong> 3.29 移除了所有非灵体召唤物攻击时的微停顿，霸气之击实战流畅度大幅提升，3.30 无削弱。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.5 SCALING & LEVEL VALUE -->
+  <section id="scaling">
+    <h2 class="section-title"><span class="num">核心收益</span> 霸气之击等级收益 &amp; 核心增伤词条拆解</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>技能石等级收益（每级 ≈ 10%–12% More） <span class="badge badge-gold">第一优先级</span></h3>
+        <ul>
+          <li><strong>为什么等级这么猛？</strong> 霸气之击的「统御哨兵」属于召唤物，其<strong>基础物理伤害与基础生命</strong>直接绑定技能石等级（独立乘区，不稀释！）：</li>
+          <li><strong>15级 → 20级对比</strong>：
+            <br>• 15级哨兵：基础物理伤害 <code>461–692</code>，基础生命 <code>4,408</code>
+            <br>• 20级哨兵：基础物理伤害 <code>768–1,152</code>（总计 +66.5%），基础生命 <code>7,228</code>
+          </li>
+          <li><strong>20级以后（21 ~ 26+级）</strong>：<strong>每 +1 级技能等级，依然稳定带来约 10%–12% 更多（More）总伤害与生命提升</strong>！</li>
+          <li><strong>高性价比堆等级途径</strong>：
+            <br>1. 市集买一颗 <strong>21级 霸气之击</strong>（主技能质变起点）
+            <br>2. <span class="unique-name">Admiral's Arrogance 手套</span>（+1~3 所有近战技能等级 = 直接+30%~36% More！）
+            <br>3. <strong>+2 所有召唤物技能等级头盔</strong> &amp; <strong>+1 物理/全技能项链</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>其他核心收益词条优先级排序 <span class="badge badge-purple">独立乘区优先</span></h3>
+        <ul>
+          <li><strong>1. 凋零层数 &amp; 降混沌抗（混沌流独立乘区）</strong>：每层凋零提高敌人承受混沌伤 <code>6%</code>（15层 = <strong>+90% 更多伤害</strong>），配合 <strong>绝望诅咒</strong> 收益远超普通增伤。</li>
+          <li><strong>2. 召唤物攻速 &amp; 玩家攻速</strong>：3.29 移除攻击停顿后，召唤物攻速几乎无损耗；玩家攻速则决定打 Boss 维持哨兵不断档的手感。</li>
+          <li><strong>3. 召唤物基础点伤（苍白之眼珠宝）</strong>：哨兵的强力重击技能（<code>SentinelHolySlam</code>）自带 <strong>100% 更多攻击伤害</strong>，极其吃腰带/深渊珠宝里的物理/混沌点伤。</li>
+          <li><strong>4. 召唤物持续时间（武器自带 17–31%）</strong>：延长哨兵与 <code>Ceaseless Flesh</code> 存在时间，减少跑图断档。</li>
+          <li><strong>5. 瓦尔·霸气之击（Vaal Domination）</strong>：招出的飞升哨兵自带 <strong>200% 更多伤害 + 70% 减伤</strong>，打王必开！</li>
+          <li><strong>6. 召唤物伤害提高 %（Increased）</strong>：前期收益高，但武器自带 <code>113–157%</code> + 天赋/星团后属于加法区会稀释，后期别为了堆百分比伤牺牲等级和抗性。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ARCHETYPES -->
+  <section id="archetypes">
+    <h2 class="section-title"><span class="num">02</span> 召唤师专属路线对比：混沌/毒 vs 穿刺 vs 元素</h2>
+    <div class="callout callout-purple">
+      <strong>手持 The Broken Elegy 避坑警告：</strong> 这把武器自带 <code>59–83% 物理伤害的额外混沌伤</code>！因此<strong>千万不要带残暴（Brutality）辅助宝石</strong>（它会让所有混沌伤害归零），也<strong>不建议走纯物理穿刺</strong>。你当前最契合、性价比最高的就是 <strong>路线 A：非自然力量·混沌直伤/中毒流</strong>！
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>路线</th>
+            <th>召唤师推荐度</th>
+            <th>升华点法 &amp; 核心机制</th>
+            <th>优点（性价比/手感）</th>
+            <th>缺点 / 注意事项</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>路线 A：混沌直伤 / 中毒</strong><br><span class="muted">（非自然力量路线）</span></td>
+            <td><span class="badge badge-purple">召唤师专属高性价比</span></td>
+            <td>
+              • 升华：<strong>黑暗统御者 → 奉献女魔 → 非自然力量 → 白骨屏障/瘟疫使者</strong>。<br>
+              • <strong>白嫖100%物理转混沌+25%凋零</strong>，不需要买三重握！<br>
+              • 主连带 <strong>虚空操纵</strong>（直伤）或 <strong>毒化/无bound异常</strong>（中毒）+ <strong>绝望</strong> 诅咒。
+            </td>
+            <td>
+              • <strong>解放手套位</strong>：可以直接戴 <code>Admiral's Arrogance</code>（+1~3 近战等级）或高血抗/攻速黄手！<br>
+              • <strong>无视元素反射地图</strong>，自带凋零增伤极高。
+            </td>
+            <td>
+              • <strong>67级建议先玩混沌直伤（带虚空操纵）</strong>，出伤快刷图爽；等 85级+ 凑齐召唤物中毒珠宝再决定要不要转纯毒。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>路线 B：纯物理 / 穿刺（Impale）</strong></td>
+            <td><span class="badge badge-green">开荒稳健 · 过渡平滑</span></td>
+            <td>
+              • 升华：<strong>黑暗统御者 → 奉献女魔 → 白骨屏障 → 瘟疫使者/腐化之魂</strong>（<strong>不点非自然力量！</strong>）。<br>
+              • 主连带 <strong>穿刺辅助</strong> + <strong>残暴</strong> + <strong>骄傲光环</strong> + 星团 <strong>腐臭尖刺</strong>。
+            </td>
+            <td>
+              • 同样不绑定三重握，可戴 <code>Admiral's Arrogance</code>。<br>
+              • 物理击中配合狂怒球猴子，白黄图直接秒怪，无任何延迟。
+            </td>
+            <td>
+              • 后期需要靠 8天赋星团（腐臭尖刺）和骄傲光环撑穿刺上限，吃一点星团和保留。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>路线 C：元素转换（三重握）</strong></td>
+            <td><span class="badge badge-gold">高上限 · 冰冻控场</span></td>
+            <td>
+              • 升华同路线 B（<strong>不点非自然力量！</strong>）。<br>
+              • 手套穿 <strong>三重握（Triad Grip）</strong>：<code>4绿孔</code>=100%转冰（配憎恨+急冻+元素要害）或 <code>4蓝孔</code>=100%转电。
+            </td>
+            <td>
+              • 4绿转冰可以<strong>冰冻/冰缓怪物</strong>，配合骸骨奉献双格挡，红图生存极安逸。<br>
+              • 后期吃满憎恨/元素穿透，爆发极高。
+            </td>
+            <td>
+              • 绑定三重握手套（少了手套血量和近战等级），且力智底子洗 <strong>4绿孔</strong> 需要工艺台技巧。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. GEM LINKS -->
+  <section id="gems">
+    <h2 class="section-title"><span class="num">03</span> 宝石 Link 与增伤收益推荐（4L → 5L → 6L）</h2>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(event, 'tab-chaos')">路线 A：非自然力量·混沌直伤/毒（召唤师推荐）</button>
+      <button class="tab-btn" onclick="switchTab(event, 'tab-phys')">路线 B：纯物理 / 穿刺（不点非自然力量）</button>
+      <button class="tab-btn" onclick="switchTab(event, 'tab-ele')">路线 C：三重握·元素转换（不点非自然力量）</button>
+    </div>
+
+    <div id="tab-chaos" class="tab-panel active">
+      <div class="card">
+        <h3>非自然力量 · 混沌直伤 / 中毒路线（哨兵100%物理转混沌）</h3>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead>
+              <tr><th>孔位顺位</th><th>推荐宝石</th><th>颜色</th><th>增伤/手感收益评估</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>主技能</strong></td>
+                <td><span class="gem gem-r">霸气之击 / 瓦尔·霸气之击</span></td>
+                <td>红</td>
+                <td>有钱优先换 <strong>瓦尔版本</strong>，打Boss开瓦尔瞬间铺满哨兵。</td>
+              </tr>
+              <tr>
+                <td><strong>第2孔 (4L核心)</strong></td>
+                <td><span class="gem gem-r">多重打击 (Multistrike)</span></td>
+                <td>红</td>
+                <td><strong>核心！</strong> 极大提升挥击速度与招怪频率，综合收益 >45%。</td>
+              </tr>
+              <tr>
+                <td><strong>第3孔 (4L刷图)</strong></td>
+                <td><span class="gem gem-r">近战伤害扩散 (Melee Splash)</span></td>
+                <td>红</td>
+                <td><strong>刷图手感核心</strong>，没有它清怪非常便秘（打终极王可换伤害石）。</td>
+              </tr>
+              <tr>
+                <td><strong>第4孔 (4L增伤)</strong></td>
+                <td><span class="gem gem-b">召唤物伤害 (Minion Damage)</span></td>
+                <td>蓝</td>
+                <td>20级约 <strong>39% 更多召唤物伤害</strong>，直伤和中毒都能吃满。</td>
+              </tr>
+              <tr>
+                <td><strong>第5孔 (5L首选)</strong></td>
+                <td><span class="gem gem-g">虚空操纵 (Void Manipulation)</span></td>
+                <td>绿</td>
+                <td>点出非自然力量后必带！20级提供约 <strong>34% 更多混沌伤害</strong>，直伤与中毒双吃（注意：它虽让你不能造成元素伤，但哨兵本就转混沌了）。</td>
+              </tr>
+              <tr>
+                <td><strong>第6孔 (6L成型)</strong></td>
+                <td><span class="gem gem-r">近战物理伤害</span> 或 <span class="gem gem-g">几率中毒 / 凋零之触</span></td>
+                <td>红 / 绿</td>
+                <td>
+                  • <strong>走混沌直伤（67–85级推荐）</strong>：带 <span class="gem gem-r">近战物理伤害</span>（物理先吃44%更多，再通过不洁之力全转混沌！）或 <span class="gem gem-r">无情</span>。<br>
+                  • <strong>转纯中毒流（后期）</strong>：带 <span class="gem gem-g">几率中毒 (Chance to Poison)</span> + <span class="gem gem-b">无bound异常 (Unbound Ailments)</span>。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-phys" class="tab-panel">
+      <div class="card">
+        <h3>纯物理 / 穿刺路线（不点非自然力量）</h3>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead>
+              <tr><th>孔位顺位</th><th>推荐宝石</th><th>颜色</th><th>增伤/手感收益评估</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1~4孔 (4L)</strong></td>
+                <td><span class="gem gem-r">霸气之击</span> + <span class="gem gem-r">多重打击</span> + <span class="gem gem-r">近战伤害扩散</span> + <span class="gem gem-b">召唤物伤害</span></td>
+                <td>红×3+蓝</td>
+                <td>开荒刷图铁三角，敲怪顺滑。</td>
+              </tr>
+              <tr>
+                <td><strong>第5孔 (5L)</strong></td>
+                <td><span class="gem gem-g">穿刺辅助 (Impale)</span> 或 <span class="gem gem-r">无情 (Ruthless)</span></td>
+                <td>绿 / 红</td>
+                <td>配合星团 <strong>腐臭尖刺</strong>，穿刺提供约 <strong>35%–45% 更多物理总伤</strong>；未出星团前先用无情。</td>
+              </tr>
+              <tr>
+                <td><strong>第6孔 (6L)</strong></td>
+                <td><span class="gem gem-r">近战物理伤害</span> / <span class="gem gem-r">残暴 (Brutality)</span></td>
+                <td>红</td>
+                <td><strong>残暴</strong> 约 <strong>54% 更多纯物理伤害</strong>（注意不能开憎恨等元素附加光环）。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-ele" class="tab-panel">
+      <div class="card">
+        <h3>三重握 · 元素转换路线（不点非自然力量）</h3>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead>
+              <tr><th>孔位顺位</th><th>推荐宝石</th><th>颜色</th><th>增伤/手感收益评估</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1~4孔 (4L)</strong></td>
+                <td><span class="gem gem-r">霸气之击</span> + <span class="gem gem-r">多重打击</span> + <span class="gem gem-r">近战伤害扩散</span> + <span class="gem gem-b">召唤物伤害</span></td>
+                <td>红×3+蓝</td>
+                <td>基础4L不变。</td>
+              </tr>
+              <tr>
+                <td><strong>第5孔 (5L)</strong></td>
+                <td><span class="gem gem-r">武器元素伤害 (EDWA)</span></td>
+                <td>红</td>
+                <td>约 <strong>34% 更多元素攻击伤害</strong>，人物与元素哨兵全吃。</td>
+              </tr>
+              <tr>
+                <td><strong>第6孔 (6L)</strong></td>
+                <td><span class="gem gem-g">急冻 (Hypothermia)</span> / <span class="gem gem-b">闪电穿透</span></td>
+                <td>绿 / 蓝</td>
+                <td>4绿转冰带 <strong>急冻</strong>（约30%+更多伤害+冰冻控制）；4蓝转电带 <strong>闪电穿透</strong>。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:16px;">
+      <div class="card">
+        <h3>光环配置（召唤师性价比）</h3>
+        <ul>
+          <li><span class="gem gem-r">坚定</span>：护甲核心。</li>
+          <li><span class="gem gem-b">元素净化</span>：67级过渡神器（免异常+补抗）；因黑暗统御者自带+30%全抗，召唤师很快就能把它换成增伤光环！</li>
+          <li><span class="gem gem-b">清晰 (1–6级)</span>：解决缺蓝。</li>
+          <li><strong>各路线核心增伤光环</strong>：
+            <br>• 混沌流：<span class="gem gem-g">迅捷 (Haste)</span> / <span class="gem gem-b">奋锐</span> / <span class="gem gem-b">纪律</span>
+            <br>• 物理流：<span class="gem gem-r">骄傲 (Pride)</span> + <span class="gem gem-r">纯净之捷</span>
+            <br>• 元素流：<span class="gem gem-g">憎恨</span> 或 <span class="gem gem-b">雷霆</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>辅助召唤军团（4L）</h3>
+        <ul>
+          <li><span class="gem gem-b">召唤灵体</span> + <span class="gem gem-r">幻化守卫</span> + <span class="gem gem-b">召唤物生命</span> + <span class="gem gem-b">肉盾</span></li>
+          <li><strong>灵体抓猴子</strong>：第二/七章 <code>Host Chieftain</code>（暴击球）+ <code>Carnage Chieftain</code>（狂怒球）；混沌流后期可抓 <code>苍白天使</code> 放凋零/减抗。</li>
+          <li><strong>低配幻化守卫（几C）</strong>：<code>亡者气息</code> + <code>幽暗之语</code> + 高血抗黄装手鞋衣。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>奉献女魔（双格挡）&amp; 战杖位移</h3>
+        <ul>
+          <li><span class="gem gem-g">亵渎</span> + <span class="gem gem-b">骸骨奉献 (Bone Offering)</span>：<strong>必带！</strong> 配合战杖自带格挡率轻松撑高双格挡与格挡回血。</li>
+          <li><strong>诅咒</strong>：混沌流必带 <span class="gem gem-b">绝望 (Despair)</span>（直接放大全部混沌直伤与毒伤）。</li>
+          <li><strong>双手战杖位移</strong>：<span class="gem gem-r">跃击 (Leap Slam)</span> + <span class="gem gem-g">快速攻击</span> + <span class="gem gem-b">冰霜闪现</span>（注意：战杖不能用盾冲）。</li>
+          <li><span class="gem gem-b">号召 (Convocation)</span> + <span class="gem gem-r">受伤时施放</span> + <span class="gem gem-r">熔岩护盾</span>。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. GEAR -->
+  <section id="gear">
+    <h2 class="section-title"><span class="num">04</span> 装备前后缀词条推荐 &amp; 各部位暗金推荐</h2>
+    <p class="muted" style="margin-top:-6px; margin-bottom:14px;">词条颜色：<span class="affix-pre">蓝色 = 前缀 (Prefix)</span> · <span class="affix-suf">黄色 = 后缀 (Suffix)</span> · <span class="unique-name">橙色 = 暗金装备</span>。召唤师务必注意<strong>在后缀或项链底子上补足力量（155+）和敏捷（110+）</strong>！</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:90px;">部位</th>
+            <th>前缀推荐（Prefix）</th>
+            <th>后缀推荐（Suffix）</th>
+            <th>高性价比暗金推荐（开荒 → 进阶）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>武器（当前）</strong><br><span class="muted">双手战杖</span></td>
+            <td>
+              <span class="affix-pre">（目前继续用 The Broken Elegy 即可）</span><br>
+              若后期换高配稀有战杖/单手+盾：<br>
+              <span class="affix-pre">1. +1~+2 召唤物/所有法术技能</span><br>
+              <span class="affix-pre">2. 召唤物伤害提高 %</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. 攻击速度提高 %</span>（人物敲怪手感）<br>
+              <span class="affix-suf">2. 召唤物攻速 %</span><br>
+              <em>小技巧：The Broken Elegy 武器上的插槽即使不连，也能辅助自带的 25级 Ceaseless Flesh（可放召唤物生命/肉盾/狂噬）！</em>
+            </td>
+            <td>
+              • <strong>当前武器</strong>：<span class="unique-name">The Broken Elegy</span> 可以一直用到红图甚至毕业过渡！买一把 roll 值高（额外混沌伤接近 83%、召唤物增伤接近 157%）的即可。<br>
+              • <strong>武器 6 洞用法</strong>：若武器洗出 6 洞（甚至 6L），可用来放 <strong>Ceaseless Flesh 的辅助石</strong>（如狂噬、致盲、击中瘫痪、近战伤害扩散）或把霸气之击放武器上。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>副手 / 盾牌</strong></td>
+            <td colspan="3" class="muted">
+              你当前使用双手战杖 <strong>The Broken Elegy</strong>，<strong>无副手/盾牌位</strong>。防御端靠战杖自带 <code>+22% 攻击格挡</code> + <strong>骸骨奉献</strong> + <strong>Rotten Bulwark</strong>（召唤物死亡吸收伤害）来替代盾牌。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>胸甲</strong></td>
+            <td>
+              <span class="affix-pre">1. 最大生命</span><br>
+              <span class="affix-pre">2. 护甲 / 护甲与ES</span><br>
+              <span class="affix-pre">3. 物理伤转元素（工艺）</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. 元素抗性 / 混沌抗性</span><br>
+              <span class="affix-suf">2. 额外物理减伤 (PDR %)</span><br>
+              <span class="affix-suf">3. 力量 / 敏捷</span>
+            </td>
+            <td>
+              • <strong>67级性价比之王</strong>：市集直接买 <strong>洞色匹配的腐化 6 连黄装</strong>（几C搞定）。<br>
+              • <strong>进阶</strong>：高血抗 6L 黄装，或 <span class="unique-name">忠诚之肤（Skin of the Lords）</span>（+2插槽宝石等级）、<span class="unique-name">圣约（The Covenant）</span>（混沌流神衣，自带29级附加混沌伤！）。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>手套</strong></td>
+            <td>
+              <span class="affix-pre">1. 最大生命</span><br>
+              <span class="affix-pre">2. 护甲 / ES</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. 攻击速度提高 %</span><br>
+              <span class="affix-suf">2. <strong>力量 / 敏捷</strong>（女巫刚需）</span><br>
+              <span class="affix-suf">3. 抗性</span><br>
+              <em>古灵基底：打击额外击中1个敌人</em>
+            </td>
+            <td>
+              • <strong>混沌流/物理流性价比神手</strong>：<span class="unique-name">海军上将的傲慢（Admiral's Arrogance）</span>（+1~3 所有近战技能等级 + 攻速，直接提升霸气之击等级，几C神器！）。<br>
+              • <strong>元素转换流</strong>：<span class="unique-name">三重握（Triad Grip）</span>（4绿转冰 / 4蓝转电）。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>头盔</strong></td>
+            <td>
+              <span class="affix-pre">1. <strong>+1 / +2 所有召唤物技能等级</strong></span><br>
+              <span class="affix-pre">2. 最大生命</span><br>
+              <span class="affix-pre">3. 召唤物生命 / 护甲</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. 元素抗性 / 混沌抗性</span><br>
+              <span class="affix-suf">2. 力量 / 敏捷</span><br>
+              <span class="affix-suf">3. 魔力保留效率</span>
+            </td>
+            <td>
+              • <strong>开荒</strong>：高血+力量+抗性黄装头。<br>
+              • <strong>中后期</strong>：带 <strong>+2 召唤物技能等级</strong> 的黄装头（召唤师核心增伤位）；特殊玩法可用 <span class="unique-name">渴望之冠（Crest of Desire）</span>。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>鞋子</strong></td>
+            <td>
+              <span class="affix-pre">1. 25%–30% 移动速度</span><br>
+              <span class="affix-pre">2. 最大生命</span><br>
+              <span class="affix-pre">3. 护甲 / ES</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. 力量 / 敏捷</span><br>
+              <span class="affix-suf">2. 元素抗性 / 混沌抗性</span><br>
+              <em>古灵基底：行动速度 / 击败猛攻</em>
+            </td>
+            <td>
+              • <strong>全程优选黄装</strong>：30%跑速+生命+抗性/力敏即可。<br>
+              • <strong>召唤功能暗金</strong>：<span class="unique-name">阿伯拉斯的足迹</span> 较少用，高血抗跑速黄鞋性价比最高。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>项链</strong></td>
+            <td>
+              <span class="affix-pre">1. 最大生命</span><br>
+              <span class="affix-pre">2. +1 所有技能 / +1 物理技能</span><br>
+              <span class="affix-pre">3. 非引导魔力消耗减少</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. <strong>高额力量 + 敏捷</strong>（重中之重）</span><br>
+              <span class="affix-suf">2. 元素抗性 / 混沌抗性</span><br>
+              <em>涂油：部族之怒 (Tribal Fury) 或 魔力保留</em>
+            </td>
+            <td>
+              • <strong>开荒</strong>：黄装玉髓/绿松石/玛瑙项链补大量力敏。<br>
+              • <strong>毕业</strong>：<span class="unique-name">奥尔之兴（Aul's Uprising）</span>（免费光环）或 <span class="unique-name">群星之灰（Ashes of the Stars）</span>。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>戒指</strong></td>
+            <td>
+              <span class="affix-pre">1. 最大生命</span><br>
+              <span class="affix-pre">2. <strong>工艺：非引导技能魔力消耗 -7</strong></span><br>
+              <span class="affix-pre">3. 召唤物伤害提高 %</span>（骨戒）
+            </td>
+            <td>
+              <span class="affix-suf">1. 力量 / 敏捷</span><br>
+              <span class="affix-suf">2. 元素抗性 / 混沌抗性</span><br>
+              <span class="affix-suf">3. 召唤物攻速 / 召唤物全抗</span>
+            </td>
+            <td>
+              • <strong>开荒</strong>：黄装抗性戒，<strong>前缀必打 -7 减耗</strong>。<br>
+              • <strong>进阶</strong>：<strong>唤骨戒指（Bone Ring）</strong>洗血+力敏+召唤物攻速。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>腰带</strong></td>
+            <td>
+              <span class="affix-pre">1. 最大生命</span><br>
+              <span class="affix-pre">2. 护甲 / ES</span>
+            </td>
+            <td>
+              <span class="affix-suf">1. <strong>高额力量</strong></span><br>
+              <span class="affix-suf">2. 双抗 / 混沌抗性</span><br>
+              <span class="affix-suf">3. 药剂充能获取</span>
+            </td>
+            <td>
+              • <strong>开荒至毕业</strong>：<strong>深渊腰带（Stygian Vise）</strong> + 苍白之眼珠宝（<code>最大生命</code> + <code>近期使用召唤物技能增伤</code> + <code>召唤物物理/混沌点伤</code>）。<br>
+              • <strong>高预算</strong>：<span class="unique-name">黑暗统御（Darkness Enthroned）</span>（插两颗召唤珠宝，毒/混沌流提升巨大）。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. CLUSTERS -->
+  <section id="clusters">
+    <h2 class="section-title"><span class="num">05</span> 星团珠宝（Cluster Jewels）词条推荐</h2>
+    <div class="callout callout-tip">
+      <strong>介入时机：</strong> 67级先把天赋树主干（血量、格挡、<code>灵魂援助</code>、<code>灵魂指挥</code>）点稳，<strong>80–85级</strong>再上星团。
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>大型星团（8天赋最优）</h3>
+        <p class="muted">基底：<strong>召唤物伤害提高（Minion Damage）</strong></p>
+        <ul>
+          <li><strong>饕餮恶魔（Feasting Fiends）</strong>：<span class="badge badge-green">通用必选</span><br>召唤物伤害 + 生命偷取，保证哨兵/灵体/守卫不死。</li>
+          <li><strong>复兴（Renewal）</strong>：<span class="badge badge-gold">增伤核心</span><br>满血时双倍伤害几率 + 召唤物生命再生。</li>
+          <li><strong>屠戮呼唤（Call to the Slaughter）</strong>：<span class="badge badge-blue">手感核心</span><br>近期召唤的哨兵攻速与移速大增。</li>
+          <li><strong>腐臭尖刺（Rotten Claws）</strong>：<span class="badge badge-red">仅限路线 B 物理流</span><br>召唤物穿刺几率，<strong>点了非自然力量（转混沌）或戴三重握（转元素）千万别选！</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>中型星团（按需补充）</h3>
+        <ul>
+          <li><strong>召唤物生命（4–5天赋）</strong>：必找 <strong>祝福重生（Blessed Rebirth）</strong>（近期召唤的召唤物免疫伤害，防新哨兵落地被秒）。</li>
+          <li><strong>魔力保留效率（4–5天赋）</strong>：找光环保留与光环效果，多开一个增伤光环。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>小型星团 &amp; 苍白之眼珠宝</h3>
+        <ul>
+          <li><strong>小型星团（2–3天赋）</strong>：护甲或混沌抗性基底补生存。</li>
+          <li><strong>苍白之眼珠宝（Ghastly Eye）</strong>：
+            <br>1. 最大生命
+            <br>2. 近期使用召唤物技能时召唤物伤害提高 15%–20%
+            <br>3. 召唤物附加物理点伤 / 混沌点伤（混沌流） / 召唤物中毒几率（毒流）
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FLASKS -->
+  <section id="flasks">
+    <h2 class="section-title"><span class="num">06</span> 药水选择与自动化洗法</h2>
+    <div class="card">
+      <p class="muted" style="margin-top:0;">进黄图后，用工艺台给<strong>4瓶功能药水</strong>全部附魔 <strong>「充能满时自动使用（Used when Charges reach Full）」</strong>。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>药水类型</th><th>前缀推荐</th><th>后缀推荐</th><th>核心作用</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. 生命药剂</strong></td>
+              <td>立即回复（Bubbling / Panicked）</td>
+              <td><strong>解除流血与腐化之血免疫</strong></td>
+              <td>唯一手动药水，防流血暴毙。</td>
+            </tr>
+            <tr>
+              <td><strong>2. 水银药剂</strong></td>
+              <td>充能回复 / 持续时间</td>
+              <td><strong>移动速度提高 %</strong></td>
+              <td>跑图与盾冲手感。</td>
+            </tr>
+            <tr>
+              <td><strong>3. 花岗岩 / 石化药剂</strong></td>
+              <td>药剂效果 / 持续时间</td>
+              <td><strong>药剂生效期间护甲提高 %</strong></td>
+              <td>配合坚定光环补足物理减伤。</td>
+            </tr>
+            <tr>
+              <td><strong>4. 紫晶药剂</strong></td>
+              <td>持续时间 / 受到暴击充能</td>
+              <td><strong>减少诅咒效果 %</strong></td>
+              <td>补混沌抗性，替代 Excommunicate Support。</td>
+            </tr>
+            <tr>
+              <td><strong>5. 真银 / 翠玉 / 硫磺</strong></td>
+              <td>持续时间 / 充能减少</td>
+              <td>抗性 / 格挡 / 护甲补齐</td>
+              <td>真银给猛攻（攻速移速）；硫磺给奉献地面。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ROADMAP -->
+  <section id="roadmap">
+    <h2 class="section-title"><span class="num">07</span> 召唤师 67级 → 红图三阶段平滑行动清单</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>阶段 1：67级刚进白图 <span class="badge badge-green">几C成本</span></h3>
+        <ul>
+          <li>把 <code>Excommunicate Support</code> 换掉，4L 保证：<strong>霸气之击 + 多重打击 + 近战伤害扩散 + 召唤物伤害</strong>。</li>
+          <li>开 <strong>坚定 + 元素净化 + 1级清晰</strong>，用 <strong>骸骨奉献</strong> 撑高双格挡。</li>
+          <li>市集买一件 <strong>腐化 6 连胸甲</strong> + <strong>Admiral's Arrogance 手套</strong>（注意先看力量/敏捷够不够穿）。</li>
+          <li>项链和戒指优先补齐 <strong>力量、敏捷</strong> 与三抗 75%。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>阶段 2：75–85级稳刷黄图 <span class="badge badge-blue">几十C</span></h3>
+        <ul>
+          <li>升华点出 <strong>非自然力量</strong> 走<strong>混沌直伤</strong>（主连第5孔上 <strong>虚空操纵</strong>，诅咒用 <strong>绝望</strong>）。</li>
+          <li>4瓶功能药水洗“充能满自动使用”，两枚戒指前缀打 <strong>-7 非引导魔力消耗</strong>。</li>
+          <li>配齐 <strong>灵体（绿球/蓝球猴子）</strong> + <strong>低配幻化守卫（亡者气息+幽暗之语）</strong>。</li>
+          <li>利用 <strong>The Broken Elegy</strong> 武器孔位插上 <strong>狂噬 / 召唤物生命 / 近战伤害扩散</strong> 辅助自动触发的 <code>Ceaseless Flesh</code>，白嫖狂噬Buff与高频 <code>Rotten Bulwark</code> 护盾！</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>阶段 3：85级+进军红图 <span class="badge badge-gold">成型发力</span></h3>
+        <ul>
+          <li>入手 <strong>8天赋召唤物伤害大型星团</strong>（饕餮恶魔 + 复兴 + 屠戮呼唤）。</li>
+          <li>头盔换 <strong>+2 召唤物技能等级</strong> 高血抗黄装；胸甲可考虑升级 <strong>圣约（混沌流）</strong> 或高血抗 6L。</li>
+          <li>若走混沌流觉得直伤到瓶颈，可买 <code>黑暗统御</code> 腰带 + 召唤物中毒苍白之眼珠宝平滑转为 <strong>混沌中毒流</strong>。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function switchTab(evt, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    evt.currentTarget.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+</script>
+</body>
+</html>
